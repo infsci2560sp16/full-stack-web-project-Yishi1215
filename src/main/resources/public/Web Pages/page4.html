@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../stylesheets/page4.css">
+    <title>Home page</title>
+  </head>
+  <body>
+    <ul>
+      <li><a class="active" href="#home">Home</a></li>
+      <li onclick="location.href='host.html'"><a href="#host">HOST</a></li>
+      <li><a href="#foodie">FOODIE</a></li>
+      <li  onclick="location.href='contact.html'"><a href="#contact">CONTACT</a></li>
+      <ul style="float:right;list-style-type:none;">
+        <li onclick="location.href='aboutus.html'"><a href="#about">About Us</a></li>
+        <li onclick="location.href='login.html'"><a href="#login">Login</a></li>
+      </ul>
+    </ul>
+    <div class="footer">
+        <p id="demo"></p>
+<script>
+document.getElementById("demo").innerHTML = Date();
+</script>
+
+    </div>
+  </body>
+</html>
