@@ -16,8 +16,8 @@ else {
 
 function diffImage(img) 
 {
-   if(img.src.match(/blank/)) img.src = "../Mary-2.jpg";
-   else img.src = "../Mary-2.jpg";
+   if(img.src.match(/blank/)) img.src = "Mary-2.jpg";
+   else img.src = "Mary-2.jpg";
 }
 
 function myFunction() {
