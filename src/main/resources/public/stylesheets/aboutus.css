@@ -12,6 +12,9 @@ ul {
     overflow: hidden;
     background-color: #333;
 }
+h1{
+  align="middle"
+}
 
 li {
     float: left;
