@@ -40,11 +40,11 @@ public class Main {
             String id = request.queryParams("id");
             for(Chef chef: chefs){
               if (chef.getId() == Integer.parseInt(id)){
-              return chef.getIntroduction();
+              return chef;
               }
             }
             return null;  
-        }, new JosnTransformer()); 
+        }, new JsonTransformer()); 
 
 
     // get("/hello", (req, res) -> {
