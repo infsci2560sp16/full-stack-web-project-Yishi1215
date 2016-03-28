@@ -2,10 +2,9 @@
   <head>
     <meta charset="UTF-8">
     <title>Host page</title>
-    <script type="text/javascript" src="ftl.js"></script>
+    <script type="text/javascript" src="js/ftl.js"></script>
     <h1 style="text-align:center"> Chef List</h1>
   </head>
-  <body background="staw.jpg">
   <p> Name || Nation || Gender || Rating </p> 
      <#list chefs as chef> 
        <div id=${chef.id} style="cursor: pointer;" onclick="loadIntro(this)" > 
