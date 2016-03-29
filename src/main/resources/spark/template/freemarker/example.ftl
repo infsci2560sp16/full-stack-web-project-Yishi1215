@@ -2,7 +2,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Host page</title>
-    <script type="text/javascript" src="js/ftl.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
     <h1 style="text-align:center"> Chef List</h1>
   </head>
   <p> Name || Nation || Gender || Rating </p> 

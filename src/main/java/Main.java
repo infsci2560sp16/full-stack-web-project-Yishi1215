@@ -28,6 +28,13 @@ public class Main {
             chefs.add(new Chef("Devin Alexander", "United States",'M', 3.0, 2, "Chef Alexander has worked at many different venues, from restaurants in the Beau Rivage Casino & Resort in Biloxi, Mississippi, to Morton’s Steakhouse here in Pittsburgh. His diverse experience has made him the master of many types of cuisine, from burgers to traditional French. But it is his love of his hometown, Pittsburgh, and passion for local cuisine that will define his creations at Braddock’s. He says that he is excited to use locally sourced meats and produce to present “uniquely inspired and seasonal dishes with a local flare.”"));
             chefs.add(new Chef("Rachel Allen", "Germany", 'F', 4.0, 3, "Rachel was introduced to country Italian cuisine at a very young age with her grandparents who were born in Patrica, Italy. Using fresh garden ingredients that his grandmother, mother and four aunts grew, Italian feasts were a regularity at the Burzese household."));
             chefs.add(new Chef("Anjum Anand", "France", 'M', 4.0, 4, "Originally from France, Chef Anand started his career in 1985 in his hometown, Vire, in the Calvados region. He brings over 25 years' experience at luxury hotels and restaurants such as Intercontinental Hotel The May Fair, Park Hyatt Canberra, Grand Hyatt Seoul, Grand Hyatt Delhi and Grand Hyatt Mumbai. Chef Anand also worked at Roppongi Hills Club, a private members club managed by Hyatt. He joins Grand Hyatt Tokyo after assignments as executive chef at Grand Hyatt Shenzhen and Grand Hyatt Taipei."));
+   
+   ArrayList<User> users = new ArrayList<User>();
+            users.add(new User("James","123123"));
+            users.add(new User("John","abc123"));
+            users.add(new User("Jean","def123"));
+            users.add(new User("Cook","ghy123"));
+            users.add(new User("Lee","xzy123"));
 
      get("/host.html", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
@@ -42,6 +49,26 @@ public class Main {
               if (chef.getId() == Integer.parseInt(id)){
               return chef;
               }
+            }
+            return null;  
+        }, new JsonTransformer()); 
+
+      post("/login",  (request, response) -> {
+            String username = request.queryParams("username");
+            String password = request.queryParams("password");
+            String login = "Log in Successfully!"
+            String logerror = "Your username and password did't match!"
+            String find = "We did't find this username!"
+            for(User user: users){
+              if (user.getUsername().equalsIgnore(username)){
+                if(user.getPassword().equals(password)){
+                   return login; 
+                }
+                else{
+                    return logerror;
+                }
+              }
+              return find;
             }
             return null;  
         }, new JsonTransformer()); 
