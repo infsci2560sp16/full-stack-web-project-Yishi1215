@@ -1,6 +1,6 @@
 function Redirect() {
-               window.location="contact.html";
-            }
+  window.location="contact.html";
+}
 
 function showhide()
  {
@@ -69,7 +69,7 @@ function seeFood(){
       showTable(xmlhttp);
     }
   };
-  xmlhttp.open("GET", "food.xml", true);
+  xmlhttp.open("GET", "xml", true);
   xmlhttp.send();
 }
 
@@ -77,7 +77,7 @@ function showTable(xml) {
   var i;
   var xmlDoc = xml.responseXML;
   var table="<tr><th>Name</th><th>MFR</th><th>serving units = g</th><th>Calories</th><th>Total fat</th><th>Saturated fat</th><th>cholesterol</th><th>sodium</th><th>carb</th><th>fiber</th><th>protein</th></tr>";
-  var x = xmlDoc.getElementsByTagName("Food");
+  var x = xmlDoc.getElementsByTagName("food");
   for (i = 0; i <x.length; i++) { 
     table += "<tr><td>" +
     x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
@@ -86,7 +86,7 @@ function showTable(xml) {
     "</td><td>" +
     x[i].getElementsByTagName("serving")[0].childNodes[0].nodeValue +
     "</td><td>" +
-    x[i].getElementsByTagName("calories")[0].childNodes[0].nodeValue +
+    x[i].getElementsByTagName("calories")[0].getAttribute('total') +
     "</td><td>" +
     x[i].getElementsByTagName("total-fat")[0].childNodes[0].nodeValue +
     "</td><td>" +

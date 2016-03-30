@@ -15,6 +15,8 @@ import org.jscience.physics.model.RelativisticModel;
 import org.jscience.physics.amount.Amount;
 import org.json.*;
 import com.heroku.sdk.jdbc.DatabaseUrl;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
 
@@ -38,9 +40,9 @@ public class Main {
 
      get("/host.html", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("chefs",chefs);
-            return new ModelAndView(attributes, "example.ftl");
-        }, new FreeMarkerEngine()); 
+              attributes.put("chefs",chefs);
+              return new ModelAndView(attributes, "example.ftl");
+            }, new FreeMarkerEngine());           
 
 
      get("/chef",  (request, response) -> {
@@ -76,8 +78,44 @@ public class Main {
             }
             return find;  
          }, new JsonTransformer()); 
- 
 
+      get("/xml", (request, response) -> {
+        response.type("text/xml");
+        try {
+          String content = new String(Files.readAllBytes(Paths.get("src/main/resources/public/food.xml")));
+          return content;
+        } catch (Exception e) {
+          return "";
+        }
+       });
+
+get("/db", (req, res) -> {
+      Connection connection = null;
+      Map<String, Object> attributes = new HashMap<>();
+      try {
+        connection = DatabaseUrl.extract().getConnection();
+
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+
+        ArrayList<String> output = new ArrayList<String>();
+        while (rs.next()) {
+          output.add( "Read from DB: " + rs.getTimestamp("tick"));
+        }
+
+        attributes.put("results", output);
+        return new ModelAndView(attributes, "db.ftl");
+      } catch (Exception e) {
+        attributes.put("message", "There was an error: " + e);
+        return new ModelAndView(attributes, "error.ftl");
+      } finally {
+        if (connection != null) try{connection.close();} catch(SQLException e){}
+      }
+    }, new FreeMarkerEngine());
+
+ 
     // get("/hello", (req, res) -> {
     //   RelativisticModel.select();
     //   Amount<Mass> m = Amount.valueOf("12 GeV").to(KILOGRAM);
@@ -91,32 +129,7 @@ public class Main {
     //         return new ModelAndView(attributes, "index.ftl");
     //     }, new FreeMarkerEngine());
 
-    // get("/db", (req, res) -> {
-    //   Connection connection = null;
-    //   Map<String, Object> attributes = new HashMap<>();
-    //   try {
-    //     connection = DatabaseUrl.extract().getConnection();
-
-    //     Statement stmt = connection.createStatement();
-    //     stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-    //     stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-    //     ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
-    //     ArrayList<String> output = new ArrayList<String>();
-    //     while (rs.next()) {
-    //       output.add( "Read from DB: " + rs.getTimestamp("tick"));
-    //     }
-
-    //     attributes.put("results", output);
-    //     return new ModelAndView(attributes, "db.ftl");
-    //   } catch (Exception e) {
-    //     attributes.put("message", "There was an error: " + e);
-    //     return new ModelAndView(attributes, "error.ftl");
-    //   } finally {
-    //     if (connection != null) try{connection.close();} catch(SQLException e){}
-    //   }
-    // }, new FreeMarkerEngine());
-
+    
   }
 
 }

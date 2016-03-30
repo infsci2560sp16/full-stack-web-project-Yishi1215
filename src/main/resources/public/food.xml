@@ -1,38 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-       <xs:element name="HostFood">
-              <xs:complexType>
-                     <xs:sequence>
-                            <xs:element name="food" maxOccurs="unbounded">
-                                   <xs:complexType>
-                                          <xs:sequence>
-                                                 <xs:element name="name" type="xs:string"></xs:element>
-                                                 <xs:element name="mfr" type="xs:string"></xs:element>
-                                                 <xs:element name="serving" type="xs:int">
-                                                        <xs:complexType>
-                                                               <xs:attribute name="units" type="xs:string"></xs:attribute>
-                                                           </xs:complexType>
-                                                    </xs:element>
-                                                 <xs:element name="calories">
-                                                        <xs:complexType>
-                                                               <xs:attribute name="total" type="xs:int"></xs:attribute>
-                                                               <xs:attribute name="fat" type="xs:int"></xs:attribute>
-                                                        </xs:complexType>
-                                                 </xs:element>
-                                                 <xs:element name="total-fat" type="xs:int"></xs:element>
-                                                 <xs:element name="saturated-fat" type="xs:int"></xs:element>
-                                                 <xs:element name="cholesterol" type="xs:int"></xs:element>
-                                                 <xs:element name="sodium" type="xs:int"></xs:element>
-                                                 <xs:element name="carb" type="xs:int"></xs:element>
-                                                 <xs:element name="fiber" type="xs:int"></xs:element>
-                                                 <xs:element name="protein" type="xs:int"></xs:element>
-                                          </xs:sequence>
-                                   </xs:complexType>
-                            </xs:element>
-                     </xs:sequence>
-              </xs:complexType>
-       </xs:element>
-</xs:schema>
 
 <HostFood>
 
