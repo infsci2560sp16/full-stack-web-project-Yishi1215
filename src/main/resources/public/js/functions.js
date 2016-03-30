@@ -4,13 +4,13 @@ function Redirect() {
 
 function showhide()
  {
-       var div = document.getElementById("newpost");
-if (div.style.display !== "none") {
+  var div = document.getElementById("newpost");
+  if (div.style.display !== "none") {
     div.style.display = "none";
-}
-else {
+  }
+  else {
     div.style.display = "block";
-}
+  }
 }
 
 
@@ -37,3 +37,71 @@ function loadIntro(elem){
   xhttp.open("GET", "/chef?id="+elem.id, true);
   xhttp.send();
   }
+
+function login(e) {
+    e.preventDefault();
+    var name = document.querySelector('#username').value;
+    var password = document.querySelector('#password').value;
+    var data = {};
+    data.name = name;
+    data.password = password;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/login", true);
+    xhttp.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    xhttp.onreadystatechange = function() {
+       if (xhttp.readyState == 4 && xhttp.status == 200) {
+           // console.log(xhttp.responseText);
+           // alert(xhttp.responseText);
+           var textnode = document.createTextNode(xhttp.responseText);
+           // var node = document.getElementById("loginform");
+           // node.appendChild(textnode);
+           document.getElementById("loginform").appendChild(textnode);
+       }
+    };
+    xhttp.send(JSON.stringify(data));
+}
+
+function seeFood(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      showTable(xmlhttp);
+    }
+  };
+  xmlhttp.open("GET", "food.xml", true);
+  xmlhttp.send();
+}
+
+function showTable(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Name</th><th>MFR</th><th>serving units = g</th><th>Calories</th><th>Total fat</th><th>Saturated fat</th><th>cholesterol</th><th>sodium</th><th>carb</th><th>fiber</th><th>protein</th></tr>";
+  var x = xmlDoc.getElementsByTagName("Food");
+  for (i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("mfr")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("serving")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("calories")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("total-fat")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("saturated-fat")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("cholesterol")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("sodium")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("carb")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("fiber")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("protein")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}

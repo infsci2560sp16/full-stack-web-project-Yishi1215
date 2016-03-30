@@ -1,13 +1,31 @@
-html{
-    background-image: url("../index.jpg");
-    background-size: cover;
+
+body {margin:25px;}
+
+h2{
+	text-align: center;
 }
+
+div.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+div.container {
+  text-align: center; 
+  padding: 10px 20px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
+}
+h1{
+  align="middle"
 }
 
 li {
@@ -35,10 +53,16 @@ li a:hover:not(.active) {
     background-color: #4CAF50;
 }
 
-/*.footer {
-    position: absolute;
-    background-color: grey;
-    bottom: 0;
-    left:0;
-    width: 100%;*/
+.parent {
+	width: 40em;
+	height: 5em;
+	color: gray;
+	font-weight: bold;
+	font-size: 2em;
 }
+
+.parent span {
+	color: white;
+}
+
+

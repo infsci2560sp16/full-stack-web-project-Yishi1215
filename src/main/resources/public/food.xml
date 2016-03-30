@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+       <xs:element name="HostFood">
+              <xs:complexType>
+                     <xs:sequence>
+                            <xs:element name="food" maxOccurs="unbounded">
+                                   <xs:complexType>
+                                          <xs:sequence>
+                                                 <xs:element name="name" type="xs:string"></xs:element>
+                                                 <xs:element name="mfr" type="xs:string"></xs:element>
+                                                 <xs:element name="serving" type="xs:int">
+                                                        <xs:complexType>
+                                                               <xs:attribute name="units" type="xs:string"></xs:attribute>
+                                                           </xs:complexType>
+                                                    </xs:element>
+                                                 <xs:element name="calories">
+                                                        <xs:complexType>
+                                                               <xs:attribute name="total" type="xs:int"></xs:attribute>
+                                                               <xs:attribute name="fat" type="xs:int"></xs:attribute>
+                                                        </xs:complexType>
+                                                 </xs:element>
+                                                 <xs:element name="total-fat" type="xs:int"></xs:element>
+                                                 <xs:element name="saturated-fat" type="xs:int"></xs:element>
+                                                 <xs:element name="cholesterol" type="xs:int"></xs:element>
+                                                 <xs:element name="sodium" type="xs:int"></xs:element>
+                                                 <xs:element name="carb" type="xs:int"></xs:element>
+                                                 <xs:element name="fiber" type="xs:int"></xs:element>
+                                                 <xs:element name="protein" type="xs:int"></xs:element>
+                                          </xs:sequence>
+                                   </xs:complexType>
+                            </xs:element>
+                     </xs:sequence>
+              </xs:complexType>
+       </xs:element>
+</xs:schema>
+
+<HostFood>
+
+<food type = "fruit">
+	<name>Avocado Dip</name>
+	<mfr>Sunnydale</mfr>
+	<serving units="g">29</serving>
+	<calories total="110" fat="100"/>
+	<total-fat>11</total-fat>
+	<saturated-fat>3</saturated-fat>
+	<cholesterol>5</cholesterol>
+	<sodium>210</sodium>
+	<carb>2</carb>
+	<fiber>0</fiber>
+	<protein>1</protein>
+</food>
+
+<food type = "bread">
+	<name>Bagels, New York Style </name>
+	<mfr>Thompson</mfr>
+	<serving units="g">104</serving>
+	<calories total="300" fat="35"/>
+	<total-fat>4</total-fat>
+	<saturated-fat>1</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>510</sodium>
+	<carb>54</carb>
+	<fiber>3</fiber>
+	<protein>11</protein>
+</food>
+
+<food type = "meat">
+	<name>Beef Frankfurter, Quarter Pound </name>
+	<mfr>Armitage</mfr>
+	<serving units="g">115</serving>
+	<calories total="370" fat="290"/>
+	<total-fat>32</total-fat>
+	<saturated-fat>15</saturated-fat>
+	<cholesterol>65</cholesterol>
+	<sodium>1100</sodium>
+	<carb>8</carb>
+	<fiber>0</fiber>
+	<protein>13</protein>
+</food>
+
+<food type = "meat">
+	<name>Chicken Pot Pie</name>
+	<mfr>Lakeson</mfr>
+	<serving units="g">198</serving>
+	<calories total="410" fat="200"/>
+	<total-fat>22</total-fat>
+	<saturated-fat>9</saturated-fat>
+	<cholesterol>25</cholesterol>
+	<sodium>810</sodium>
+	<carb>42</carb>
+	<fiber>2</fiber>
+	<protein>10</protein>
+</food>
+
+<food type = "vegetable">
+	<name>Cole Slaw</name>
+	<mfr>Fresh Quick</mfr>
+	<serving units=" cup">1.5</serving>
+	<calories total="20" fat="0"/>
+	<total-fat>0</total-fat>
+	<saturated-fat>0</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>15</sodium>
+	<carb>5</carb>
+	<fiber>2</fiber>
+	<protein>1</protein>
+</food>
+
+<food type = "egg">
+	<name>Eggs</name>
+	<mfr>Goodpath</mfr>
+	<serving units="g">50</serving>
+	<calories total="70" fat="40"/>
+	<total-fat>4.5</total-fat>
+	<saturated-fat>1.5</saturated-fat>
+	<cholesterol>215</cholesterol>
+	<sodium>65</sodium>
+	<carb>1</carb>
+	<fiber>0</fiber>
+	<protein>6</protein>
+</food>
+
+<food type = "nut">
+	<name>Hazelnut Spread</name>
+	<mfr>Ferreira</mfr>
+	<serving units="tbsp">2</serving>
+	<calories total="200" fat="90"/>
+	<total-fat>10</total-fat>
+	<saturated-fat>2</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>20</sodium>
+	<carb>23</carb>
+	<fiber>2</fiber>
+	<protein>3</protein>
+</food>
+
+<food type = "snack">
+	<name>Potato Chips</name>
+	<mfr>Lees</mfr>
+	<serving units="g">28</serving>
+	<calories total="150" fat="90"/>
+	<total-fat>10</total-fat>
+	<saturated-fat>3</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>180</sodium>
+	<carb>15</carb>
+	<fiber>1</fiber>
+	<protein>2</protein>
+</food>
+
+<food type = "soy">
+	<name>Soy Patties, Grilled</name>
+	<mfr>Gardenproducts</mfr>
+	<serving units="g">96</serving>
+	<calories total="160" fat="45"/>
+	<total-fat>5</total-fat>
+	<saturated-fat>0</saturated-fat>
+	<cholesterol>0</cholesterol>
+	<sodium>420</sodium>
+	<carb>10</carb>
+	<fiber>4</fiber>
+	<protein>9</protein>
+</food>
+
+<food type = "snack">
+	<name>Truffles, Dark Chocolate</name>
+	<mfr>Lyndon's</mfr>
+	<serving units="g">39</serving>
+	<calories total="220" fat="170"/>
+	<total-fat>19</total-fat>
+	<saturated-fat>14</saturated-fat>
+	<cholesterol>25</cholesterol>
+	<sodium>10</sodium>
+	<carb>16</carb>
+	<fiber>1</fiber>
+	<protein>1</protein>
+</food>
+
+</HostFood>

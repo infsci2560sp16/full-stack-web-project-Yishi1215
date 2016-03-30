@@ -3,6 +3,11 @@
 -moz-box-sizing: border-box;
 box-sizing: border-box;
 }
+
+html{
+     background-image: url("../4.jpg");
+    background-size: cover;
+}
 body {
 margin:0;
 padding:0;
@@ -89,7 +94,6 @@ border-radius: 10px 10px 0 0;
 color: #993300;
 }
 
-/* Makes responsive fields. Sets size and field alignment.*/
 input[type=text]{
 margin-bottom: 20px;
 margin-top: 10px;
@@ -121,4 +125,5 @@ resize:none;
 }
 input[type=text]:focus,textarea:focus {
 border-color: #4697e4;
+background-color: #bdccdb;
 }

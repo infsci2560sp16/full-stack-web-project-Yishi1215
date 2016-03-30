@@ -1,4 +1,4 @@
-Public class User{
+public class User{
 	private String username;
 	private String password;
 
@@ -7,11 +7,11 @@ Public class User{
 	   this.password = password;
 	}
 
-	public getUsername(){
+	public String getUsername(){
 	   return username;
 	}
 
-	public getPassword(){
+	public String getPassword(){
 	   return password;
 	}
 }

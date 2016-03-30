@@ -13,7 +13,7 @@ import static javax.measure.unit.SI.KILOGRAM;
 import javax.measure.quantity.Mass;
 import org.jscience.physics.model.RelativisticModel;
 import org.jscience.physics.amount.Amount;
-
+import org.json.*;
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
 public class Main {
@@ -54,25 +54,29 @@ public class Main {
         }, new JsonTransformer()); 
 
       post("/login",  (request, response) -> {
-            String username = request.queryParams("username");
-            String password = request.queryParams("password");
-            String login = "Log in Successfully!"
-            String logerror = "Your username and password did't match!"
-            String find = "We did't find this username!"
-            for(User user: users){
-              if (user.getUsername().equalsIgnore(username)){
-                if(user.getPassword().equals(password)){
-                   return login; 
-                }
-                else{
-                    return logerror;
-                }
-              }
-              return find;
+            String body = request.body();
+            JSONObject obj = new JSONObject(body);
+            String username = obj.getString("name");
+            String password = obj.getString("password");
+            System.out.println(username);
+            System.out.println(password);
+            String login = "Log in Successfully!";
+            String logerror = "Your username and password did't match!";
+            String find = "We did not find this username!";
+            for(User user : users){
+              if (user.getUsername().equals(username)){
+                  if(user.getPassword().equals(password)){
+                    // System.out.println("password match.");
+                    return login; 
+                  }
+                  else{
+                  return logerror;
+                  }
+               }
             }
-            return null;  
-        }, new JsonTransformer()); 
-
+            return find;  
+         }, new JsonTransformer()); 
+ 
 
     // get("/hello", (req, res) -> {
     //   RelativisticModel.select();
