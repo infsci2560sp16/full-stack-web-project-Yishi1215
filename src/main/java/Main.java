@@ -116,18 +116,18 @@ get("/db", (req, res) -> {
     }, new FreeMarkerEngine());
 
  
-    // get("/hello", (req, res) -> {
-    //   RelativisticModel.select();
-    //   Amount<Mass> m = Amount.valueOf("12 GeV").to(KILOGRAM);
-    //   return "E=mc^2: 12 GeV = " + m.toString();
-    // });
+    get("/hello", (req, res) -> {
+      RelativisticModel.select();
+      Amount<Mass> m = Amount.valueOf("12 GeV").to(KILOGRAM);
+      return "E=mc^2: 12 GeV = " + m.toString();
+    });
 
-    // get("/", (request, response) -> {
-    //         Map<String, Object> attributes = new HashMap<>();
-    //         attributes.put("message", "Hello World!");
+    get("/", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("message", "Hello World!");
 
-    //         return new ModelAndView(attributes, "index.ftl");
-    //     }, new FreeMarkerEngine());
+            return new ModelAndView(attributes, "index.ftl");
+        }, new FreeMarkerEngine());
 
     
   }
